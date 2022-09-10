@@ -1,0 +1,39 @@
+{{define "book_list.html"}}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+    <div><a href="/book/new">添加新书</a></div>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{range .data}}
+            <tr>
+                <td>{{.Id}}</td>
+                <td>{{.Title}}</td>
+                <td>{{.Price}}</td>
+                <td><a href="/book/delete?id={{.Id}}">删除</a></td>
+            </tr>
+        {{end}}
+        </tbody>
+    </table>
+
+    <form action="/book/search" method="get">
+        <input type="text" name="searchThing">
+        <br>
+        <input type="submit" value="搜索">
+    </form>
+
+    </body>
+    </html>
+{{end}}
